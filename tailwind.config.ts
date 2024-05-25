@@ -8,6 +8,12 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      colors: {
+        "chatgpt-gray": "#2A2A2A",
+        darkerChatgptGray: "#1A1A1A",
+        lightGray: "#303030",
+        redBinIcon: "#FF0000",
+      },
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
         "gradient-conic":
