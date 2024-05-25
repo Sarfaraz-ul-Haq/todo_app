@@ -13,12 +13,12 @@ function TodoApp() {
   const [editId, setEditId] = useState<number | null>(null);
   const [editTask, setEditTask] = useState<string>("");
 
-  const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setTodo(e.target.value);
+  const onChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setTodo(event.target.value);
   };
 
-  const onKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
-    if (e.key === "Enter") {
+  const onKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
+    if (event.key === "Enter") {
       addTodo();
     }
   };
@@ -57,7 +57,7 @@ function TodoApp() {
 
   return (
     <div className="bg-darkerChatgptGray min-h-screen flex flex-col justify-center items-center">
-      <h1 className="text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-pink-600 via-violet-700 to-blue-900 mb-7">
+      <h1 className="text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-pink-500 via-violet-700 to-blue-700 mb-7">
         Todo App
       </h1>
       <div className="relative w-full md:w-1/3 text-2xl mb-4">
@@ -71,17 +71,17 @@ function TodoApp() {
         />
         <button
           onClick={addTodo}
-          className="absolute inset-y-0 right-2 px-4 mt-2 mb-2 bg-darkerChatgptGray text-gray-300 rounded-md"
+          className="absolute inset-y-0 right-2 px-4 mt-2 mb-2 bg-darkerChatgptGray hover:bg-black text-gray-300 rounded-md"
         >
           Add
         </button>
       </div>
 
-      <div className="w-full md:w-1/3 flex flex-col gap-3 mt-14 text-gray-400 text-2xl">
+      <div className="w-full md:w-1/3 max-h-96 overflow-y-auto flex flex-col gap-1 mt-2 text-gray-400 text-1xl">
         {todos.map((todo) => (
           <div
             key={todo.id}
-            className="flex items-center justify-between  p-3 w-full"
+            className={"flex items-center justify-between p-3 rounded-lg"}
           >
             {editId === todo.id ? (
               <input
@@ -89,7 +89,7 @@ function TodoApp() {
                 value={editTask}
                 onChange={(e) => setEditTask(e.target.value)}
                 placeholder="Edit task"
-                className="bg-darkerChatgptGray p-2 rounded-lg outline-none w-full"
+                className="bg-darkerChatgptGray p-2 outline-none w-full border-blue-500 border-b-2"
               />
             ) : (
               <span className="flex-grow">{todo.task}</span>
@@ -103,13 +103,13 @@ function TodoApp() {
                     startEditTodo(todo.id, todo.task);
                   }
                 }}
-                className="px-2 text-green-800 text-lg"
+                className="px-2 text-blue-700 text-lg"
               >
                 {editId === todo.id ? <FaCheck /> : <FaEdit />}
               </button>
               <button
                 onClick={() => deleteTodo(todo.id)}
-                className="px-2 redBinIcon text-lg"
+                className="px-2 text-customRed text-lg"
               >
                 <FaTrash />
               </button>
