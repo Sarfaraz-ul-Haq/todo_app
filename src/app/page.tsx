@@ -79,10 +79,7 @@ function TodoApp() {
 
       <div className="w-full md:w-1/3 max-h-96 overflow-y-auto flex flex-col gap-1 mt-2 text-gray-400 text-1xl">
         {todos.map((todo) => (
-          <div
-            key={todo.id}
-            className={"flex items-center justify-between p-3 rounded-lg"}
-          >
+          <div key={todo.id} className="flex p-3">
             {editId === todo.id ? (
               <input
                 type="text"
